@@ -30,6 +30,12 @@ var AppModel = Backbone.Model.extend({
     }, this);
     // on stop sets current song to null
     params.library.on('ended', function(song){ 
+
+        // dequeue. 
+          //var head = 0. songQueue(head).remove
+          // head++
+        // play next song.
+
         console.log('self before shift', self.get('songQueue').at(0));
 
         this.get('songQueue').shift();

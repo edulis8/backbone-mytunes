@@ -10,7 +10,7 @@ var SongQueueEntryView = Backbone.View.extend({
  },
 
  render: function(){
-  // console.log(this.$el.html(this.song_template(this.model.toJSON())));
+  // console.log(this.$el.html(this.song_template(this.model.toJSON())));  Why toJSON???
   return this.$el.html(this.song_template(this.model.toJSON()));
  }
 

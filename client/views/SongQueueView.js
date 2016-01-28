@@ -15,6 +15,7 @@ var SongQueueView = Backbone.View.extend({
     this.$el.html('<th>Queue</th>').append(
       this.collection.map(function(song){
         return this.$el
+        // return new SongQentryView!
       })
     );
   }

@@ -10,8 +10,12 @@ var SongQueue = Songs.extend({
   // Only insert to model if 
 
 
+//When a song is added
+  // plays it if it's the only song in the queue
   initialize: function(){
-  // Dequeue in here
+  // Dequeue in here, said Ben.
+  // spec: 'when a song ends, remove it from queue'
+  // dq uses remove
   },
   playFirst: function(){
     this.at(0).play();
@@ -19,6 +23,7 @@ var SongQueue = Songs.extend({
   }
 
 });
+
 
 
   // model: function(model){
