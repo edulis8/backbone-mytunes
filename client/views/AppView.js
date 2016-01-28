@@ -11,7 +11,7 @@ var AppView = Backbone.View.extend({
     /// and app.libraryView is an instance of LibraryView associated with {collection: library}
     this.libraryView = new LibraryView({collection: this.model.get('library')});
 
-    //this.songQView = new SongQView (collection this.model.get.songQ)
+    //this.songQueueView = new SongQueueView({collection: this.model.get('songQueue'));
 
     //
 
