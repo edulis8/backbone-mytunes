@@ -9,8 +9,8 @@ var PlayerView = Backbone.View.extend({
     
     // BEN SAID PUT THIS HERE DEFINITELY
     // console.log('initialize',this);
-
-    // this.$el.on('ended', function(){
+    console.log(this.el, 'from PlayerView');
+    // this.$el.bind('ended', function(){
 
     //   console.log('in anon' , this.model);
 
@@ -20,9 +20,13 @@ var PlayerView = Backbone.View.extend({
     
   },
   event:{
+   // 'ended audio': 'dequeue'
     // on click or xx trigger
     // execute setSong
     // listen for update on currentSong
+  },
+  dequeue: function(){
+    console.log("test");
   },
   setSong: function(song){
     this.model = song;
@@ -30,14 +34,13 @@ var PlayerView = Backbone.View.extend({
   },
 
   render: function(){
-    return this.$el.attr('src', this.model ? this.model.get('url') : '');
-    
+    console.log(this.model,"from Play View");
+    return this.$el.attr('src', this.model ? this.model.get('url') : '')
+    .bind("ended", function(){
+      this.model.ended(); //trigger 'ended'
+      console.log("ended");
 
-    // .bind("ended", function(){
-    //   this.model.ended(); //trigger 'ended'
-    //   console.log("ended");
-
-    //}.bind(this)); //bind to object instead of DOM element
+    }.bind(this)); //bind to object instead of DOM element
   }
 
 });

@@ -14,25 +14,38 @@ var SongQueue = Songs.extend({
   // plays it if it's the only song in the queue
   initialize: function(){
     // this.on.collection // undefined
+    //this.set('first', 0);
 
     ///// LISTENER ///////////
     this.on('add', function(){
-      // render songQueueView
-      console.log('view', this.view);
       console.log('Added to SongQueue');
+      console.log('sq length',this.length)
+      if(this.length === 1){
+        this.playFirst();
+      }
     });
-
-
 
   // Dequeue in here, said Ben.
   // spec: 'when a song ends, remove it from queue'
   // dq uses remove
   },
+  dequeue: function(){
+    //var first = this.get('first');
+    console.log('Dequeues...');
+    this.shift();
+    console.log(this);
+    this.playFirst();
+    //this.set('first', ++first);
+  },
   playFirst: function(){
-    this.at(0).play();
-    console.log('this',this);
-  }
+    //var first = this.get('first');
 
+    console.log(this);
+    //console.log('playFirst is playing: ',this.at(first).play());
+    if(this.at(0)){
+      this.at(0).play();
+    }
+  }    
 });
 
 
