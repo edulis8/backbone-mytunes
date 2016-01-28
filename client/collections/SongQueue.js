@@ -13,6 +13,17 @@ var SongQueue = Songs.extend({
 //When a song is added
   // plays it if it's the only song in the queue
   initialize: function(){
+    // this.on.collection // undefined
+
+    ///// LISTENER ///////////
+    this.on('add', function(){
+      // render songQueueView
+      console.log('view', this.view);
+      console.log('Added to SongQueue');
+    });
+
+
+
   // Dequeue in here, said Ben.
   // spec: 'when a song ends, remove it from queue'
   // dq uses remove
