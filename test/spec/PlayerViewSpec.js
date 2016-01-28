@@ -32,7 +32,7 @@ describe('PlayerView', function() {
   });
 
   describe('Song transitions', function() {
-    xit('dequeues a song when finished playing & plays the next song', function(){
+    it('dequeues a song when finished playing & plays the next song', function(){
       var firstSong = library.at(0)
         , secondSong = library.at(1)
         , thirdSong = library.at(2)
@@ -43,13 +43,22 @@ describe('PlayerView', function() {
       songQueue.add(thirdSong);
       // play the first song
       songQueue.playFirst();
+      var test = appView.playerView.model;
       expect(appView.playerView.model).to.equal(firstSong);
       // Simulate the end of the first song
+      var whatsThis = $(appView.playerView.el);
       $(appView.playerView.el).trigger('ended');
+      var test2 = appView.playerView.model;
       expect(appView.playerView.model).to.equal(secondSong);
       // Simulate the end of the second song
       $(appView.playerView.el).trigger('ended');
       expect(appView.playerView.model).to.equal(thirdSong);
+
+      // notes:
+      // extends playFirst method to SongQueue
+      // Update PlayerView whenever 'play' is triggered
+      // 'ended' updates PlayerView
+      // PlayerView is only holding currentSong - where does PlayerView retrieve queues?
     });
   });
 
