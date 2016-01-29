@@ -2,15 +2,28 @@
 var SongQueueEntryView = Backbone.View.extend({
  // your code here!
  // associating View with SongModel
- tagName: 'tr',
- model: SongQueue, //
+ tagName: 'ul',
+ // model: SongQueue, //
  //template: _.template('<td>(<%= artist %>)</td><td><%= title %></td>'),
- song_template: _.template('<td>Title: <%= title%> by <%=artist%></td>'),
+ song_template: _.template('<li>Title: <%= title%> by <%=artist%></li>'), // tds
 
  // ???:
  initialize:function(){
   //console.log('SongQueueEntryView.js');
-  // this.render();
+  // this.render:;
+ },
+ events: {
+  'click': function(){
+    console.log(this, 'dequeues from SongQueueEntryView');
+    // this.collection.get(this).remove();
+
+    // this.$el.remove();
+    // this.el.remove();
+    // this.remove(); // removes the correct model, but unable to re-add.
+    this.model.dequeue();
+  }
+  //click, fn ==>
+  //this.model.dequeue()
  },
 
  render: function(){
@@ -22,3 +35,10 @@ var SongQueueEntryView = Backbone.View.extend({
 
 
 });
+
+
+    // 'click': function() {
+    //   //this.model.play();
+    //   // check if something is playing, if so, enqueue
+    //   this.model.enqueue();
+    // }

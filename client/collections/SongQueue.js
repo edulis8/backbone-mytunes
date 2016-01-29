@@ -24,6 +24,13 @@ var SongQueue = Songs.extend({
         this.playFirst();
       }
     });
+    this.on('dequeue',function(){
+      this.dequeue();
+    }, this);
+    //////////other listeners/////////
+    // this on add, this.enqueue, this
+    // this on dequeue, this.dequeue, this
+    // this on ended, this.playNext, this
 
   // Dequeue in here, said Ben.
   // spec: 'when a song ends, remove it from queue'
@@ -31,9 +38,9 @@ var SongQueue = Songs.extend({
   },
   dequeue: function(){
     //var first = this.get('first');
-    console.log('Dequeues...');
+    console.log('Dequeues inside SongQueue.js...');
     this.shift();
-    console.log(this);
+    console.log(this.model,'in SongQueue');
     this.playFirst();
     //this.set('first', ++first);
   },

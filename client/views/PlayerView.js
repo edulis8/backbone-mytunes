@@ -10,13 +10,11 @@ var PlayerView = Backbone.View.extend({
     // BEN SAID PUT THIS HERE DEFINITELY
     // console.log('initialize',this);
     console.log(this.el, 'from PlayerView');
-    // this.$el.bind('ended', function(){
 
-    //   console.log('in anon' , this.model);
+    this.$el.on('ended', ( function(){this.model.ended();} ).bind(this));
 
-    //   this.model.ended();
 
-    // }).bind(this);
+  ///////// NOTE: in solutions video, anon. function is wrapped in parens before .bind
     
   },
   event:{
@@ -35,15 +33,16 @@ var PlayerView = Backbone.View.extend({
 
   render: function(){
     console.log(this.model,"from Play View");
-    return this.$el.attr('src', this.model ? this.model.get('url') : '')
-    .bind("ended", function(){
-      this.model.ended(); //trigger 'ended'
-      console.log("ended");
-
-    }.bind(this)); //bind to object instead of DOM element
+    return this.$el.attr('src', this.model ? this.model.get('url') : '');
+    //bind to object instead of DOM element
   }
 
 });
+ // .bind("ended", function(){
+ //      this.model.ended(); //trigger 'ended'
+ //      console.log("ended");
+
+ //    }.bind(this)
 
 // you can have a listener
 // this.$el.on(listener)
