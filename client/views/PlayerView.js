@@ -6,22 +6,13 @@ var PlayerView = Backbone.View.extend({
   el: '<audio controls autoplay />',
   
   initialize: function() {
-    
-    // BEN SAID PUT THIS HERE DEFINITELY
-    // console.log('initialize',this);
-    console.log(this.el, 'from PlayerView');
+        console.log(this.el, 'from PlayerView');
 
-    this.$el.on('ended', ( function(){this.model.ended();} ).bind(this));
-
-
-  ///////// NOTE: in solutions video, anon. function is wrapped in parens before .bind
-    
+    this.$el.on('ended', ( function(){
+      this.model.ended();
+    }).bind(this));
   },
   event:{
-   // 'ended audio': 'dequeue'
-    // on click or xx trigger
-    // execute setSong
-    // listen for update on currentSong
   },
   dequeue: function(){
     console.log("test");
@@ -34,15 +25,6 @@ var PlayerView = Backbone.View.extend({
   render: function(){
     console.log(this.model,"from Play View");
     return this.$el.attr('src', this.model ? this.model.get('url') : '');
-    //bind to object instead of DOM element
   }
 
 });
- // .bind("ended", function(){
- //      this.model.ended(); //trigger 'ended'
- //      console.log("ended");
-
- //    }.bind(this)
-
-// you can have a listener
-// this.$el.on(listener)

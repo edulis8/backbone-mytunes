@@ -3,12 +3,12 @@ var LibraryEntryView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td>(<%= artist %>)</td><td><%= title %></td>'),
+  template: _.template('<td>(<%= artist %>)</td><td><%= title %>. Played <%=playCount%> times.</td>'),
 
   // This is for event mapping in a view. When you instantiate a view, Backbone will put events onto that DOM node for you according to this specification:
   events: {
     'click': function() {
-      //this.model.play();
+      this.render();
       // check if something is playing, if so, enqueue
       this.model.enqueue();
     }

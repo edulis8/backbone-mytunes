@@ -1,9 +1,7 @@
 // App.js - Defines a backbone model class for the whole app.
 var AppModel = Backbone.Model.extend({
 
-// songQueue: [];
   initialize: function(params){
-    var self = this;
     // params is {library: library}, and library is a collection of SongModel instances
     
     // our app instance gets a currentSong and a songQueue, new instances of those
@@ -21,41 +19,18 @@ var AppModel = Backbone.Model.extend({
     // set our app instance's currentsong to be that SongModel instance (that song)
 
     params.library.on('play', function(song){ // song is the second param of the trigger in SongModel ('this')
-      //console.log('self',self.get('songQueue').at(0));
       this.set('currentSong', song);
     }, this);
 
     // Queues
     params.library.on('enqueue', function(song){ 
-        console.log(song);
-        self.get('songQueue').add(song);
-        console.log(self.get('songQueueView'))
+        this.get('songQueue').add(song);
     }, this);
 
     // on stop sets current song to null
     params.library.on('ended', function(song){ 
-        console.log('about to dequeue')
         this.get('songQueue').dequeue();
-        // dequeue. 
-          //var head = 0. songQueue(head).remove
-          // head++
-        // play next song.
-
-        //console.log('self before shift', self.get('songQueue').at(0));
-        //this.get('songQueue').remove(0);
-        //this.get('songQueue').shift();
-
-        //console.log('self after shift', self.get('songQueue').at(0));
-
-        //play next song
-        //self.get('songQueue').playFirst();
-        //this.set('currentSong',this.get('songQueue').at(0));
     }, this);
   }
-
-  //   it('queues the next song when an "enqueue" event is fired', function(){
-  //   app.get('library').at(1).enqueue();
-  //   expect(app.get('songQueue').at(0)).to.equal(app.get('library').at(1));
-  // });
 
 });
